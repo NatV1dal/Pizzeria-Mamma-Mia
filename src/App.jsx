@@ -4,15 +4,21 @@ import { Container } from 'react-bootstrap';
 import NavBar from './components/Navbar';
 import Home from './pages/Home'
 import Footer from './components/Footer'
+import Register from './components/Register';
+import Login from './components/Login';
+
 
 function App() {
   
   return (
     <>
     <div>
-    <NavBar></NavBar>
-     <Home></Home>
-     <Footer></Footer>
+    <NavBar />
+     {/* <Home /> */}
+     {/* <Register /> */}
+    <Login /> 
+   
+     <Footer />
     </div>
 
      

@@ -3,7 +3,7 @@ import { Container } from "react-bootstrap";
 
 function Footer() {
     return (
-        <footer className="bg-dark text-light text-center py-3">
+        <footer className="bg-dark text-light text-center py-3 fixed-bottom">
             <Container>
                 <p className="mb-0">
                     © 2021 - Pizzería Mamma Mia! - Todos los derechos reservados
@@ -14,3 +14,4 @@ function Footer() {
 }
 
 export default Footer;
+
