@@ -11,11 +11,13 @@ function CardPizza({ name, price, ingredients, img }) {
                 <hr />
                 <Card.Subtitle className="mb-2 mt-4 text-muted text-center">Ingredientes:</Card.Subtitle>
                 <Card.Text className="mb-4 text-center fs-6">
-                    {ingredients.map((ingredient, index) => (
-                        <span key={index} className="ingredient">
-                            {index === 0 ? '🍕 ' : ''}{ingredient}{index < ingredients.length - 1 ? ', ' : ''}
-                        </span>
-                    ))}
+                <ul className="list-unstyled">
+                        {ingredients.map((ingredient, index) => (
+                            <li key={index} className="ingredient">
+                                🍕 {ingredient}
+                            </li>
+                        ))}
+                    </ul>
                 </Card.Text>
                 <hr />
                 <Card.Text className="mb-4 mt-2 text-center fs-5">
