@@ -6,8 +6,8 @@ function NavBar() {
     const token = true;
 
     return (
-        <BootstrapNavbar bg="dark" variant="dark" expand="lg" className="fixed-top">
-            <Container className="d-flex justify-content-between">
+        <BootstrapNavbar bg="dark" variant="dark" className="sticky-top">
+            <Container fluid className="d-flex justify-content-between">
                 <BootstrapNavbar.Brand>Pizzería Mamma Mia!</BootstrapNavbar.Brand>
                 <Nav>
                     <Button variant="outline-light" className="me-2">🍕 Home</Button>

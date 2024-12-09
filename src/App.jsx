@@ -15,10 +15,10 @@ function App() {
     <>
     <div>
     <NavBar />
-    <Home />
+    {/*<Home /> */}
      {/* <Register /> */}
    {/*  <Login />  */}
-   <Cart/>
+     <Cart/>
    
      <Footer />
     </div>
