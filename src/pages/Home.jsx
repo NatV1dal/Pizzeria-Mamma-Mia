@@ -1,9 +1,27 @@
-import React from "react";
+
 import Header from "./Header";
 import CardPizza from "./CardPizza";
-import { pizzas } from "../data/pizzas";
+import { useState, useEffect } from "react";
 
 function Home() {
+
+  //guardar las pizzas
+  const [pizzas, setPizzas] = useState([])
+
+  // llamar appi desde el componente
+  useEffect (() => {
+  const consultarPizzas = async () => {
+    const url = "http://localhost:5001/api/pizzas"; // endpoint pizzas
+    const response = await fetch(url)
+    const data = await response.json()
+    console.log("pizzas obtenidas: ", data)
+    setPizzas(data) // guarda la info en el estado
+  };
+
+  consultarPizzas()
+  }, [])
+
+
     return (
       <>
         <Header />
