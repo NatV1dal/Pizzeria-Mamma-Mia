@@ -7,10 +7,10 @@ function CardPizza({ name, price, ingredients, img }) {
         <Card style={{ width: '20rem', marginBottom: '20px' }} className="shadow-sm">
             <Card.Img variant="top" src={img} alt={`Imagen de ${name}`} />
             <Card.Body>
-                <div className="fw-bold">Pizza {name}</div>
+                <div className="fw-bold fs-5">Pizza {name}</div>
                 <hr />
-                <Card.Subtitle className="mb-2 mt-4 text-muted text-center">Ingredientes:</Card.Subtitle>
-                <Card.Text className="mb-4 text-center fs-6">
+                <Card.Subtitle className="mb-2 mt-4 text-muted text-start">Ingredientes:</Card.Subtitle>
+                <Card.Text className="mb-4 text-start fs-6">
                 <ul className="list-unstyled">
                         {ingredients.map((ingredient, index) => (
                             <li key={index} className="ingredient">
@@ -20,7 +20,7 @@ function CardPizza({ name, price, ingredients, img }) {
                     </ul>
                 </Card.Text>
                 <hr />
-                <Card.Text className="mb-4 mt-2 text-center fs-5">
+                <Card.Text className="mb-4 mt-2 text-start fs-5 fw-bold">
                     <strong>Precio: </strong>${price.toLocaleString('es-CL')}
                 </Card.Text>
                 <div className="d-flex justify-content-between">

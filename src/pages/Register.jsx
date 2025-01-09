@@ -52,12 +52,14 @@ const Register = () => {
 
   return (
     <>
-    <h1>Registrate</h1>
+    <div className="d-flex justify-content-center align-items-center mt-5">
+        <div>
+        <h1 className='mb-5'>Registrate</h1>
     <Form className='formulario' onSubmit={validarDatos}>
     {error && <p className="text-danger">{errorMessage}</p>}
 
     <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email</Form.Label>
+        <Form.Label className="fw-bold">Email</Form.Label>
             <Form.Control 
                 type="email" 
                 placeholder="Ingresar Email" 
@@ -67,7 +69,7 @@ const Register = () => {
     </Form.Group>
 
     <Form.Group className="mb-3" controlId="formBasicPass">
-        <Form.Label>Contraseña</Form.Label>
+        <Form.Label className="fw-bold">Contraseña</Form.Label>
             <Form.Control 
                 type="password" 
                 placeholder="Ingresar Contraseña" 
@@ -77,7 +79,7 @@ const Register = () => {
     </Form.Group>
 
     <Form.Group className="mb-3" controlId="formBasicPassConf">
-        <Form.Label>Confirmar Contraseña</Form.Label>
+        <Form.Label className="fw-bold">Confirmar Contraseña</Form.Label>
             <Form.Control 
                 type="password" 
                 placeholder="confirmar Contraseña" 
@@ -86,10 +88,14 @@ const Register = () => {
             />
     </Form.Group>
 
-      <Button variant="primary" type="submit">
+      <Button variant="dark" className="w-100 mt-4" type="submit">
         Registrarse
       </Button>
     </Form>
+
+        </div>
+    </div>
+    
     </>
   )
 }

@@ -1,5 +1,6 @@
 import { formatCurr } from "../utils/formatCurr";
 import { Navbar as BootstrapNavbar, Container, Button, Nav } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 function NavBar() {
     const total = 25000;
@@ -10,20 +11,21 @@ function NavBar() {
             <Container fluid className="d-flex justify-content-between">
                 <BootstrapNavbar.Brand>Pizzería Mamma Mia!</BootstrapNavbar.Brand>
                 <Nav>
-                    <Button variant="outline-light" className="me-2">🍕 Home</Button>
+                    <Link to="/" className="btn btn-outline-light me-2">🍕 Home</Link>
                     {token ? (
                         <>
-                            <Button variant="outline-light" className="me-2">🔐 Login</Button>
-                            <Button variant="outline-light">🔐 Register</Button>
+                            <Link to="login" className="btn btn-outline-light me-2">🔐 Login</Link>
+                            <Link to="register" className="btn btn-outline-light me-2">🔐 Register</Link>
                         </>
                     ) : (
                         <>
-                            <Button variant="outline-light" className="me-2">🔒 Logout</Button>
-                            <Button variant="outline-light">🔓 Profile</Button>
+                            <Link to="/" className="btn btn-outline-light me-2">🔒 Logout</Link>
+                            <Link to="profile" className="btn btn-outline-light me-2">🔓 Profile</Link>
+                          
                         </>
                     )}
                 </Nav>
-                <Button variant="outline-info">🛒 Total ${formatCurr(total)}</Button>
+                <Link to="cart" className="btn btn-outline-light me-2">🛒 Total ${formatCurr(total)}</Link>
             </Container>
         </BootstrapNavbar>
     );

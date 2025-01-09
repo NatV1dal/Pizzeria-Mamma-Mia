@@ -38,14 +38,14 @@ const Login = () => {
   };
 
   return (
-    <div className="d-flex justify-content-center align-items-center vh-100">
+    <div className="d-flex justify-content-center align-items-center mt-5">
       <div>
-        <h1>Iniciar Sesión</h1>
+        <h1 className='mb-5'>Iniciar Sesión</h1>
         <Form className="formulario" onSubmit={validarDatos}>
           {error && <p className="text-danger">{errorMessage}</p>}
 
           <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Email</Form.Label>
+            <Form.Label className="fw-bold">Email</Form.Label>
             <Form.Control
               type="email"
               placeholder="Ingresa tu correo"
@@ -55,7 +55,7 @@ const Login = () => {
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicPass">
-            <Form.Label>Contraseña</Form.Label>
+            <Form.Label className="fw-bold">Contraseña</Form.Label>
             <Form.Control
               type="password"
               placeholder="Ingresa tu contraseña"
@@ -64,7 +64,7 @@ const Login = () => {
             />
           </Form.Group>
 
-          <Button variant="primary" type="submit">
+          <Button variant="dark" className="w-100 mt-4" type="submit">
             Ingresar
           </Button>
         </Form>
