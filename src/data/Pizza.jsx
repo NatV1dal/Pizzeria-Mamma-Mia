@@ -7,7 +7,7 @@ function Pizza() {
 
   useEffect(() => {
     const fetchPizza = async () => {
-      const url = "http://localhost:5000/api/pizzas/p001"; // ID fijo p001
+      const url = "http://localhost:5001/api/pizzas/p001"; // ID fijo p001
       const response = await fetch(url)
       const data = await response.json()
       setPizza(data)
