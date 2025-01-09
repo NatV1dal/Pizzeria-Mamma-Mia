@@ -7,7 +7,7 @@ function CardPizza({ name, price, ingredients, img }) {
         <Card style={{ width: '20rem', marginBottom: '20px' }} className="shadow-sm">
             <Card.Img variant="top" src={img} alt={`Imagen de ${name}`} />
             <Card.Body>
-                <Card.Title className="fw-bold">Pizza {name}</Card.Title>
+                <div className="fw-bold">Pizza {name}</div>
                 <hr />
                 <Card.Subtitle className="mb-2 mt-4 text-muted text-center">Ingredientes:</Card.Subtitle>
                 <Card.Text className="mb-4 text-center fs-6">
