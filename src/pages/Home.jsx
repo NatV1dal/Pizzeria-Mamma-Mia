@@ -1,29 +1,13 @@
+import { useContext } from "react";
+import { PizzasContext } from "../context/PizzasContext";
 import { CartContext } from "../context/CartContext";
-import { useContext, useState, useEffect } from "react";
 import Header from "../components/Header"
 import CardPizza from "./CardPizza";
 
 function Home() {
 
-  //guardar las pizzas
-  const [pizzas, setPizzas] = useState([])
-
-  // consumir el contexto
+  const { pizzas } = useContext(PizzasContext);
   const { AgregarCarro } = useContext(CartContext);
-
-  // llamar appi desde el componente
-  useEffect (() => {
-  const consultarPizzas = async () => {
-    const url = "http://localhost:5001/api/pizzas"; // endpoint pizzas
-    const response = await fetch(url)
-    const data = await response.json()
-    console.log("pizzas obtenidas: ", data)
-    setPizzas(data) // guarda la info en el estado
-  };
-
-  consultarPizzas()
-  }, [])
-
 
     return (
       <>

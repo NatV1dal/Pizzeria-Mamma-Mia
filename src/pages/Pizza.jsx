@@ -1,55 +1,31 @@
+import { PizzasContext } from "../context/PizzasContext";
 import { useState, useEffect } from "react"
 import { Container } from "react-bootstrap";
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
 function Pizza() {
-  const [pizza, setPizza] = useState(null)
-
-  useEffect(() => {
-    const fetchPizza = async () => {
-      const url = "http://localhost:5001/api/pizzas/p001"; // ID fijo p001
-      const response = await fetch(url)
-      const data = await response.json()
-      setPizza(data)
-    };
-
-    fetchPizza()
-  }, [])
+  const { id } = useParams(); 
+  const { getPizzaById } = useContext(PizzasContext); 
+  const pizza = getPizzaById(id);
 
   if (!pizza) {
-    return <p>Cargando información de la pizza...</p>
+    return <h2 className="text-center mt-5">Pizza no encontrada 🍕</h2>;
   }
-
   return (
-
-    <div className="row justify-content-center mt-4"> 
-      <div className="col-md-4 d-flex justify-content-center">
-        <Card style={{ width: "20rem" }} className="shadow-sm">
-          <Card.Img variant="top" src={pizza.img} alt={`Imagen de ${pizza.name}`} />
-          <Card.Body>
-            <Card.Title className="fw-bold">Pizza {pizza.name}</Card.Title>
-            <hr className="pizza-divider" />
-            <Card.Subtitle className="mb-2 mt-4 text-start text-muted">Ingredientes:</Card.Subtitle>
-            <div className="mb-4 text-start fs-6">
-              <ul className="list-unstyled pizza-ingredients">
-                {pizza.ingredients.map((ingredient, index) => (
-                  <li key={index} className="pizza-ingredient">
-                    🍕 {ingredient}
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <hr className="pizza-divider" />
-            <div className="pizza-desc">{pizza.desc}</div>
-            <div className="mb-4 mt-2 text-start fs-5 fw-bold">
-              <strong>Precio: </strong>${pizza.price.toLocaleString("es-CL")}
-            </div>
-            <Button variant="dark" className="pizza-button w-100">
-            🛒 Añadir al carrito
-            </Button>
-          </Card.Body>
-        </Card>
+    <div className="container mt-5">
+      <h1 className="text-center">{pizza.name}</h1>
+      <div className="row justify-content-center">
+        <img src={pizza.img} alt={pizza.name} className="img-fluid col-md-6" />
+        <div className="col-md-6">
+          <h3>Ingredientes:</h3>
+          <ul>
+            {pizza.ingredients.map((ingredient, index) => (
+              <li key={index}>{ingredient}</li>
+            ))}
+          </ul>
+          <h3>Precio: ${pizza.price.toLocaleString("es-CL")}</h3>
+        </div>
       </div>
     </div>
   );

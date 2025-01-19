@@ -9,7 +9,7 @@ function NavBar() {
 
     const total = getTotal()
 
-    const token = false; // simula el estado del usuario
+    const token = true; // simula el estado del usuario
 
     return (
         <BootstrapNavbar bg="dark" variant="dark" className="sticky-top">

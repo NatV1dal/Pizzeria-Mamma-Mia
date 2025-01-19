@@ -11,35 +11,34 @@ import { Routes, Route } from 'react-router-dom';
 import Profile from './pages/Profile';
 import NotFound from './components/NotFound';
 import { CartProvider } from './context/CartContext';
+import { PizzasProvider } from './context/PizzasContext';
 
 
 function App() {
   
   return (
     <>
-    <CartProvider>
-    <div className="d-flex flex-column min-vh-100">
-    <NavBar />
-    <main className='flex-grow-1'>
-      <Container>
-        <Routes>
-          <Route path="/" element={<Home />}/> 
-          <Route path="/register" element={<Register />}/>
-          <Route path="/login" element={<Login />}/>
-          <Route path="/cart" element={<Cart />}/>
-          <Route path="/pizza/p001" element={<Pizza />}/>
-          <Route path="/profile" element={<Profile />}/>
-          <Route path="/*" element={<NotFound/>}/>
-        </Routes>
-      </Container>
-     
-    </main>
-   
-     <Footer />
-    </div>
-
-     
-    </CartProvider>
+    <PizzasProvider>
+      <CartProvider>
+        <div className="d-flex flex-column min-vh-100">
+          <NavBar />
+          <main className='flex-grow-1'>
+            <Container>
+              <Routes>
+                <Route path="/" element={<Home />}/> 
+                <Route path="/register" element={<Register />}/>
+                <Route path="/login" element={<Login />}/>
+                <Route path="/cart" element={<Cart />}/>
+                <Route path="/pizza/p001" element={<Pizza />}/>
+                <Route path="/profile" element={<Profile />}/>
+                <Route path="/*" element={<NotFound/>}/>
+              </Routes>
+            </Container>
+          </main>
+          <Footer />
+        </div>
+      </CartProvider>
+    </PizzasProvider>
     </>
   )
 }
