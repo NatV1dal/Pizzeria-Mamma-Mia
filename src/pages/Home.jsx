@@ -11,7 +11,7 @@ function Home() {
   // llamar appi desde el componente
   useEffect (() => {
   const consultarPizzas = async () => {
-    const url = "http://localhost:5000/api/pizzas"; // endpoint pizzas
+    const url = "http://localhost:5001/api/pizzas"; // endpoint pizzas
     const response = await fetch(url)
     const data = await response.json()
     console.log("pizzas obtenidas: ", data)
