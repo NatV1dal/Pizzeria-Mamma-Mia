@@ -2,7 +2,7 @@ import React from 'react';
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-function CardPizza({ name, price, ingredients, img }) {
+function CardPizza({ name, price, ingredients, img, onAgregarCarro}) {
     return (
         <Card style={{ width: '20rem', marginBottom: '20px' }} className="shadow-sm">
             <Card.Img variant="top" src={img} alt={`Imagen de ${name}`} />
@@ -25,7 +25,7 @@ function CardPizza({ name, price, ingredients, img }) {
                 </div>
                 <div className="d-flex justify-content-between">
                     <Button variant="outline-dark">Ver más 👀</Button>
-                    <Button variant="dark">Añadir 🛒</Button>
+                    <Button variant="dark" onClick={onAgregarCarro}>Añadir 🛒 </Button>
                 </div>
             </Card.Body>
         </Card>

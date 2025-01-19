@@ -1,12 +1,15 @@
-
+import { CartContext } from "../context/CartContext";
+import { useContext, useState, useEffect } from "react";
 import Header from "../components/Header"
 import CardPizza from "./CardPizza";
-import { useState, useEffect } from "react";
 
 function Home() {
 
   //guardar las pizzas
   const [pizzas, setPizzas] = useState([])
+
+  // consumir el contexto
+  const { AgregarCarro } = useContext(CartContext);
 
   // llamar appi desde el componente
   useEffect (() => {
@@ -34,6 +37,7 @@ function Home() {
                   price={pizza.price}
                   ingredients={pizza.ingredients}
                   img={pizza.img}
+                  onAgregarCarro={() => AgregarCarro(pizza)}
                 />
               </div>
             ))}
