@@ -1,30 +1,50 @@
+import React, { useContext } from "react";
+import { useParams } from "react-router-dom";
 import { PizzasContext } from "../context/PizzasContext";
-import { useState, useEffect } from "react"
-import { Container } from "react-bootstrap";
-import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
+import { CartContext } from "../context/CartContext";
+import { Link } from "react-router-dom";
 
 function Pizza() {
-  const { id } = useParams(); 
-  const { getPizzaById } = useContext(PizzasContext); 
-  const pizza = getPizzaById(id);
+  const { id } = useParams(); // parámetro ID de la URL
+  const { getPizzaById } = useContext(PizzasContext)
+  const pizza = getPizzaById(id); // pizza específica por ID
+  const { AgregarCarro } = useContext(CartContext) // agrega al carrito
+
 
   if (!pizza) {
     return <h2 className="text-center mt-5">Pizza no encontrada 🍕</h2>;
   }
+
   return (
     <div className="container mt-5">
-      <h1 className="text-center">{pizza.name}</h1>
-      <div className="row justify-content-center">
-        <img src={pizza.img} alt={pizza.name} className="img-fluid col-md-6" />
+      <div className="row justify-content-center align-items-center">
+        {/* Imagen de la pizza */}
         <div className="col-md-6">
-          <h3>Ingredientes:</h3>
-          <ul>
+          <img
+            src={pizza.img}
+            alt={pizza.name}
+            className="img-fluid rounded shadow-sm"
+          />
+        </div>
+
+        {/* Información de la pizza */}
+        <div className="col-md-6">
+          <h1 className="text-start mb-4 fw-bold">{pizza.name}</h1>
+          <h4 className="mb-3">Ingredientes:</h4>
+          <ul className="list-unstyled mb-4">
             {pizza.ingredients.map((ingredient, index) => (
-              <li key={index}>{ingredient}</li>
+              <li key={index} className="list-group-item">
+                🍕 {ingredient}
+              </li>
             ))}
           </ul>
-          <h3>Precio: ${pizza.price.toLocaleString("es-CL")}</h3>
+          <p className="mt-4"><strong>Descripción: </strong>{pizza.desc}</p>
+          <h3 className="fs-12 fw-bold">Precio: ${pizza.price.toLocaleString("es-CL")}</h3>
+          
+        <div className="mt-4 d-flex gap-3">
+            <Link to="/" className="btn btn-outline-dark btn-lg">Volver al Menú 👀</Link>
+            <button className="btn btn-dark btn-lg" onClick={() => AgregarCarro(pizza)}>Añadir al carrito 🛒</button>
+          </div>
         </div>
       </div>
     </div>
