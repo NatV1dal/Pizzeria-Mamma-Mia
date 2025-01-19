@@ -1,8 +1,19 @@
 import { CartContext} from '../context/CartContext';
 import React, {useContext} from 'react';
+import { Link } from 'react-router-dom';
 
 function Cart() {
   const { cart, SumaPizza, RestaPizza, getTotal } = useContext(CartContext);
+  
+  // carrito vacio
+  if (cart.length === 0) {
+    return (
+      <div className="text-center mt-5">
+        <h2 className='mb-5'>Tu carrito está vacío... 👀</h2>
+        <Link to="/" className="btn btn-dark">Ver Menú 😋</Link>
+      </div>
+    )
+  }
 
   
   return (
