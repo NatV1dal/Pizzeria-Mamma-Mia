@@ -1,4 +1,3 @@
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container } from 'react-bootstrap';
 import NavBar from './components/Navbar';
@@ -11,15 +10,17 @@ import Pizza from './pages/Pizza';
 import { Routes, Route } from 'react-router-dom';
 import Profile from './pages/Profile';
 import NotFound from './components/NotFound';
+import { CartProvider } from './context/CartContext';
 
 
 function App() {
   
   return (
     <>
+    <CartProvider>
     <div className="d-flex flex-column min-vh-100">
     <NavBar />
-    <main main className='flex-grow-1'>
+    <main className='flex-grow-1'>
       <Container>
         <Routes>
           <Route path="/" element={<Home />}/> 
@@ -31,13 +32,14 @@ function App() {
           <Route path="/*" element={<NotFound/>}/>
         </Routes>
       </Container>
+     
     </main>
    
      <Footer />
     </div>
 
      
-     
+    </CartProvider>
     </>
   )
 }

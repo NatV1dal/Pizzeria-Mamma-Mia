@@ -31,7 +31,7 @@ function Pizza() {
             <Card.Title className="fw-bold">Pizza {pizza.name}</Card.Title>
             <hr className="pizza-divider" />
             <Card.Subtitle className="mb-2 mt-4 text-start text-muted">Ingredientes:</Card.Subtitle>
-            <Card.Text className="mb-4 text-start fs-6">
+            <div className="mb-4 text-start fs-6">
               <ul className="list-unstyled pizza-ingredients">
                 {pizza.ingredients.map((ingredient, index) => (
                   <li key={index} className="pizza-ingredient">
@@ -39,12 +39,12 @@ function Pizza() {
                   </li>
                 ))}
               </ul>
-            </Card.Text>
+            </div>
             <hr className="pizza-divider" />
-            <Card.Text className="pizza-desc">{pizza.desc}</Card.Text>
-            <Card.Text className="mb-4 mt-2 text-start fs-5 fw-bold">
+            <div className="pizza-desc">{pizza.desc}</div>
+            <div className="mb-4 mt-2 text-start fs-5 fw-bold">
               <strong>Precio: </strong>${pizza.price.toLocaleString("es-CL")}
-            </Card.Text>
+            </div>
             <Button variant="dark" className="pizza-button w-100">
             🛒 Añadir al carrito
             </Button>

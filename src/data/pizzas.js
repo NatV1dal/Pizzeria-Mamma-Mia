@@ -14,5 +14,6 @@ export const pizzas = async () => {
       ingredients: ["mozzarella", "tomates", "jamón", "orégano"],
       name: "napolitana",
       price: "5950",
+      count: 1,
     },
   ]

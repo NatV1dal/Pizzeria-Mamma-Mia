@@ -1,10 +1,15 @@
+import { CartContext } from "../context/CartContext";
 import { formatCurr } from "../utils/formatCurr";
 import { Navbar as BootstrapNavbar, Container, Button, Nav } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import {useContext} from 'react';
 
 function NavBar() {
-    const total = 25000;
-    const token = true;
+    const { getTotal } = useContext(CartContext);
+
+    const total = getTotal()
+
+    const token = false; // simula el estado del usuario
 
     return (
         <BootstrapNavbar bg="dark" variant="dark" className="sticky-top">

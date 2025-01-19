@@ -10,7 +10,7 @@ function CardPizza({ name, price, ingredients, img }) {
                 <div className="fw-bold fs-5">Pizza {name}</div>
                 <hr />
                 <Card.Subtitle className="mb-2 mt-4 text-muted text-start">Ingredientes:</Card.Subtitle>
-                <Card.Text className="mb-4 text-start fs-6">
+                <div className="mb-4 text-start fs-6">
                 <ul className="list-unstyled">
                         {ingredients.map((ingredient, index) => (
                             <li key={index} className="ingredient">
@@ -18,11 +18,11 @@ function CardPizza({ name, price, ingredients, img }) {
                             </li>
                         ))}
                     </ul>
-                </Card.Text>
+                </div>
                 <hr />
-                <Card.Text className="mb-4 mt-2 text-start fs-5 fw-bold">
+                <div className="mb-4 mt-2 text-start fs-5 fw-bold">
                     <strong>Precio: </strong>${price.toLocaleString('es-CL')}
-                </Card.Text>
+                </div>
                 <div className="d-flex justify-content-between">
                     <Button variant="outline-dark">Ver más 👀</Button>
                     <Button variant="dark">Añadir 🛒</Button>
