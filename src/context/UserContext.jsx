@@ -8,8 +8,8 @@ export const UserProvider = ({ children }) => {
     const [user, setUser] = useState(true); 
 
     // Método para cerrar sesión
-    const logout = () => {
-        setUser(false);
+    const logout = () => { setUser(false); 
+        
     };
 
     return (

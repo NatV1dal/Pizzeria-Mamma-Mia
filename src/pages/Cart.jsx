@@ -1,9 +1,11 @@
 import { CartContext} from '../context/CartContext';
 import React, {useContext} from 'react';
 import { Link } from 'react-router-dom';
+import { UserContext } from '../context/UserContext';
 
 function Cart() {
   const { cart, SumaPizza, RestaPizza, getTotal } = useContext(CartContext);
+  const { user } = useContext(UserContext);
   
   // carrito vacio
   if (cart.length === 0) {
@@ -65,7 +67,7 @@ function Cart() {
         </div>
 
         <div className="text-start mt-3">
-          <button className="btn btn-dark">Pagar</button>
+        <button className="btn btn-dark" disabled={!user}>Pagar</button>
         </div>
       </div>
     </div>
