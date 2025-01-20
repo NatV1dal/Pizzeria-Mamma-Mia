@@ -23,6 +23,15 @@ export const PizzasProvider = ({ children }) => { // Asegúrate de usar children
         fetchPizzas();
       }, []);
 
+      // Función para convertir texto a tipo titulo
+  function TxtTipoTitulo(str) {
+    return str
+      .split(" ") // Divide el texto en palabras
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()) // Capitaliza la primera letra y convierte el resto en minúsculas
+      .join(" "); // Une las palabras en un solo string
+  }
+      
+
     // Función para obtener una pizza específica por ID
     const getPizzaById = (id) => {
         console.log("Buscando pizza con ID:", id); // Verifica el ID recibido
@@ -30,7 +39,7 @@ export const PizzasProvider = ({ children }) => { // Asegúrate de usar children
       };
 
     return (
-        <PizzasContext.Provider value={{ pizzas, getPizzaById }}>
+        <PizzasContext.Provider value={{ pizzas, getPizzaById, TxtTipoTitulo }}>
             {children}
         </PizzasContext.Provider>
     );

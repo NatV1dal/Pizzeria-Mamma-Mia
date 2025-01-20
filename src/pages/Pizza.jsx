@@ -1,12 +1,11 @@
 import React, { useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import { PizzasContext } from "../context/PizzasContext";
 import { CartContext } from "../context/CartContext";
-import { Link } from "react-router-dom";
 
 function Pizza() {
   const { id } = useParams(); // parámetro ID de la URL
-  const { getPizzaById } = useContext(PizzasContext)
+  const { getPizzaById, TxtTipoTitulo } = useContext(PizzasContext)
   const pizza = getPizzaById(id); // pizza específica por ID
   const { AgregarCarro } = useContext(CartContext) // agrega al carrito
 
@@ -29,7 +28,7 @@ function Pizza() {
 
         {/* Información de la pizza */}
         <div className="col-md-6">
-          <h1 className="text-start mb-4 fw-bold">{pizza.name}</h1>
+          <h1 className="text-start mb-4 fw-bold">Pizza {TxtTipoTitulo(pizza.name)}</h1>
           <h4 className="mb-3">Ingredientes:</h4>
           <ul className="list-unstyled mb-4">
             {pizza.ingredients.map((ingredient, index) => (

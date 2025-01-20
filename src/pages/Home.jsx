@@ -6,8 +6,9 @@ import CardPizza from "./CardPizza";
 
 function Home() {
 
-  const { pizzas } = useContext(PizzasContext);
+  const { pizzas, TxtTipoTitulo } = useContext(PizzasContext);
   const { AgregarCarro } = useContext(CartContext);
+
 
     return (
       <>
@@ -17,7 +18,8 @@ function Home() {
             {pizzas.map((pizza) => (
               <div key={pizza.id} className="col-md-4 col-12 mb-3">
                 <CardPizza
-                  name={pizza.name}
+                  id= {pizza.id}
+                  name={TxtTipoTitulo(pizza.name)}
                   price={pizza.price}
                   ingredients={pizza.ingredients}
                   img={pizza.img}
