@@ -12,13 +12,10 @@ function NavBar() {
     const total = getTotal();
 
 
-     // Estado token
-     console.log("Estado actual TOKEN :", user);
-
     return (
         <BootstrapNavbar bg="dark" variant="dark" className="sticky-top">
             <Container fluid className="d-flex justify-content-between">
-                <BootstrapNavbar.Brand>Pizzería Mamma Mia!</BootstrapNavbar.Brand>
+                <BootstrapNavbar.Brand> 🍕 Pizzería Mamma Mia!</BootstrapNavbar.Brand>
                 <Nav>
                     <Link to="/" className="btn btn-outline-light me-2">🍕 Home</Link>
                     {user ? ( // Si user es true
