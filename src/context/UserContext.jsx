@@ -1,15 +1,32 @@
-import { createContext, useState } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
-// Crear  contexto
 export const UserContext = createContext();
 
-// Proveer
-export const UserProvider = ({ children }) => { 
-    const [user, setUser] = useState(true); 
+export const UserProvider = ({ children }) => {
+    // Estado inicial del token en localStorage
+    const [user, setUser] = useState(() => {
+        const token = localStorage.getItem("token");
+        return token === "TokenSimulado123"; // Verifica si el token en localStorage es válido
+    });
+
+    // Sincronizar el estado del token con localStorage
+    useEffect(() => {
+        if (user) {
+            localStorage.setItem("token", "TokenSimulado123"); // Guarda el token en localStorage
+        } else {
+            localStorage.removeItem("token"); // Elimina el token de localStorage
+        }
+    }, [user]);
+
+     // iniciar Token en true
+     useEffect(() => {
+        localStorage.setItem("token", "TokenSimulado123");
+    }, []);
 
     // Método para cerrar sesión
-    const logout = () => { setUser(false); 
-        
+    const logout = () => {
+        setUser(false); // token a false
+        console.log("token eliminado");
     };
 
     return (

@@ -68,6 +68,8 @@ function Cart() {
 
         <div className="text-start mt-3">
         <button className="btn btn-dark" disabled={!user}>Pagar</button>
+        {!user && (<p className="text-danger mt-4 fs-6 fw-bold">Inicia sesión para pagar...</p>
+      )}
         </div>
       </div>
     </div>
