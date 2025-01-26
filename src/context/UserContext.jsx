@@ -14,23 +14,49 @@ export const UserProvider = ({ children }) => {
         if (user) {
             localStorage.setItem("token", "TokenSimulado123"); // Guarda el token en localStorage
         } else {
-            localStorage.removeItem("token"); // Elimina el token de localStorage
+            localStorage.removeItem("token"); // Elimina token de localStorage
         }
     }, [user]);
 
-     // iniciar Token en true
+     // inicia Token en true
      useEffect(() => {
         localStorage.setItem("token", "TokenSimulado123");
     }, []);
 
-    // Método para cerrar sesión
+    // Cerrar sesión
     const logout = () => {
-        setUser(false); // token a false
+        setUser(false);
         console.log("token eliminado");
     };
 
+
+    // Metodo para registro
+    const register = async (email, password) => {
+        try {
+
+            const response = await fetch ('http://localhost:5001//api/auth/register', {
+                method: 'POST',
+                headers: {
+                    'content-Type': 'application/json'
+                },
+                body: JSON.stringify({ email, password })
+            } )
+
+            if(response.ok) {
+                alert('Registro Exitoso')
+            } else {
+                const error = await response.json();
+                alert('Error al registrar', error)
+            }
+
+        } catch (error){
+            console.error('Error al registrar', error);
+        }
+    }
+
+
     return (
-        <UserContext.Provider value={{ user, logout }}>
+        <UserContext.Provider value={{ user, logout, register }}>
             {children}
         </UserContext.Provider>
     );
