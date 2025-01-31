@@ -7,6 +7,35 @@ function Cart() {
   const { cart, SumaPizza, RestaPizza, getTotal } = useContext(CartContext);
   const { user } = useContext(UserContext);
   
+// enviar carrito a backend
+const checkout = async () => { 
+  if (!user) {
+    alert("Debes iniciar sesión para realizar una compra");
+    return;
+  }
+  console.log("Enviando carrito:", cart) // comprobar envio
+
+  try {
+    const response = await fetch("http://localhost:5001/api/checkouts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${user.token}`
+      },
+      body: JSON.stringify({ cart }) // enviar carrito al backend
+    });
+    if (response.ok) {
+      alert("Tu compra ha sido realizada con éxito!");
+    } else {
+      const errorData = await response.json();
+      alert("Error en la compra: " + (errorData.message || "Inténtalo nuevamente"));
+    }
+  } catch (error) {
+    console.error("Error en el checkout:", error);
+    alert("Hubo un problema al procesar la compra");
+  }
+};
+
   // carrito vacio
   if (cart.length === 0) {
     return (
@@ -67,8 +96,8 @@ function Cart() {
         </div>
 
         <div className="text-start mt-3">
-        <button className="btn btn-dark" disabled={!user}>Pagar</button>
-        {!user && (<p className="text-danger mt-4 fs-6 fw-bold">Inicia sesión para pagar...</p>
+        <button className="btn btn-dark" disabled={!user} onClick={checkout}>Pagar</button>
+        {!user && (<p className="text-danger mt-4 fs-6 fw-bold">Debes iniciar sesión para poder comprar...</p>
       )}
         </div>
       </div>

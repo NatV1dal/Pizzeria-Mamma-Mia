@@ -1,8 +1,13 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react'; 
+import { UserContext } from '../context/UserContext';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
 const Login = () => {
+
+  // Acceso al UserContext
+  const { login } = useContext(UserContext);
+
   // Estados del formulario
   const [email, setEmail] = useState('');
   const [pass, setPass] = useState('');
@@ -12,7 +17,7 @@ const Login = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   // Función para enviar formulario
-  const validarDatos = (e) => {
+  const validarDatos = async (e) => {
     e.preventDefault();
 
     // Validación
@@ -29,12 +34,17 @@ const Login = () => {
       return;
     }
 
-    // Si el formulario se envía correctamente, se envía mensaje y limpia los campos
-    alert('¡Autenticación exitosa!');
-    setError(false);
-    setErrorMessage('');
-    setEmail('');
-    setPass('');
+    try {
+      await login(email, pass); 
+      setError(false);
+      setErrorMessage('');
+      setEmail('');
+      setPass('');
+    } catch (error) {
+      setErrorMessage(error.message || 'Error al iniciar sesión'); 
+      setError(true);
+    }
+
   };
 
   return (

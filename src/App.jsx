@@ -49,7 +49,7 @@ function App() {
                         <Route path="/pizza/:id" element={<Pizza />} />
 
                         {/* Ruta no encontrada */}
-                        <Route path="/*" element={<h1>404 - Página no encontrada</h1>} />
+                        <Route path="*" element={<NotFound />} />
                     </Routes>
                    
               </Container>
